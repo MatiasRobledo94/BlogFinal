@@ -14,6 +14,8 @@ urlpatterns = [
     path('editarPerfil/', editarPerfil, name='editarperfil'),
     path('logout/', LogoutView.as_view(template_name='blog/logout.html'), name='logout'),
     path('editarPerfil/agregar_avatar', agregar_avatar, name='agregaravatar'),
+    path('editarPerfil/agregarinformacion', perfil, name='agregarinformacion'),
+    path('miperfil/', "", name='miperfil'),
     
     path('listarpublicaciones/', listarpublicaciones, name = 'listarpublicaciones'),   
     path('crearpublicacion/', crear_publicacion, name = 'crearpublicacion'),

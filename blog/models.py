@@ -8,6 +8,12 @@ class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to='avatares', null=True, blank=True)
 
+class Perfil(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    descripcion = RichTextField(blank=True, null=True)
+    link = models.CharField(max_length=200, null=True, blank=True)
+    imagen = models.ImageField(upload_to='imagen', null=True, blank=True)
+
 class Publicacion(models.Model):
     nombre=models.CharField(max_length=30)
     categoria=models.CharField(max_length=15)
@@ -20,12 +26,3 @@ class Publicacion(models.Model):
 
     def __str__(self):
         return self.nombre
-
-class Perfil(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    imagen = models.ImageField(upload_to='imagen', null=True, blank=True)
-    bio = models.TextField(null=True, blank=True)
-    link = models.URLField(max_length=200, null=True, blank=True)
-
-    class Meta:
-        ordering = ['user__username']

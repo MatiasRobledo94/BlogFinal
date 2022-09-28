@@ -1,0 +1,19 @@
+<br>
+<main class="container">
+    <div class="card h-100 shadow border-0">
+        <div class=" col-md-2 offset-md-1">
+                <form enctype="multipart/form-data" action="" method="POST">
+                    {% csrf_token %} 
+                            <table>                         
+                                {{ form.media }}
+                                {{ form }}
+                            </table>
+                        <input type="submit" class="btn btn-primary" value="Enviar">
+                        <br>
+                </form>
+            <br> 
+        </div>
+    </div>
+</main>
+<br>
+<br>

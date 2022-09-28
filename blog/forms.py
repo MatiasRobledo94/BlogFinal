@@ -40,3 +40,11 @@ class CrearPublicacion(forms.Form):
     nombre=forms.CharField(max_length=50)
     categoria=forms.CharField(max_length=50)
     descripcion = RichTextFormField()
+
+class Perfil(forms.Form):
+    descripcion = forms.CharField(max_length=200)
+    link=forms.CharField(max_length=50)
+    imagen = forms.ImageField(label="Imagen", required=False)
+    class Meta:
+        model = Perfil
+        fields = ['descripcion', 'link' , 'imagen']

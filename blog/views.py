@@ -123,7 +123,6 @@ def leerpublicacion(request, id):
 def nosotros(request):
     return render (request, 'blog/nosotros.html')
     
-
 @login_required
 def editarpublicacion(request, id):
     if(comprobacion(request) == True):
@@ -157,9 +156,26 @@ def deletepublicacion(request, id):
 
 #trabaja como funcion
 def comprobacion(request):
-
     if(str(request.user)=="admin"):
         usuario=True
     else:
         usuario=False
     return usuario
+
+@login_required
+def perfil(request):
+    usuario=request.user
+    if request.method == "POST":
+        form = Perfil(request.POST, request.FILES)
+        if form.is_valid(): 
+            informacion = form.cleaned_data
+            form = Perfil(descripcion=informacion["descripcion"], link=informacion["link"], imagen=informacion["imagen"])
+            perfil.save()
+            return render(request,'blog/inicio.html', {'usuario':request.user,"mensaje":f"Se agrego informacion correctamente",'imagen':obtenerAvatar(request)})
+    else:
+        form = Perfil()
+    return render(request, "blog/agregarinformacion.html", {"form": form,'usuario':request.user,'imagen':obtenerAvatar(request)})
+
+# def miperfil(request, id):
+    miperfil=Perfil.objects.filter(id=id) 
+    return render (request, 'blog/miperfil.html', {'leerpublicacion': leerpublicacion,'imagen':obtenerAvatar(request)})
