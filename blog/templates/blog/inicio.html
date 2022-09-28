@@ -1,0 +1,51 @@
+{% extends "blog/index.html" %}
+
+{%block titulo_de_pagina%}
+<h1><i>Este blog es destinado a la apertura  de un espacio para publicaciones con las novedades ultimas novedades fiscales y realizacion de opiniones sobre temas publicados</i></h1>
+{%endblock%}
+{%block contenido%}
+<br>
+{% if  mensaje  %}
+<div class="text-center">
+    <div class = "row gx-56 aling-items.center">
+        <div class ="container px-5 justify-content-center">
+            <i><h3 class = "fw-bolder">{{ mensaje }}</h3></i>
+        </div>
+    </div>
+</div>
+{% else %}
+<section class="py-5">
+    <div class = "row gx-56 aling-items.center">
+        <i><h2 class = text-center> Ultimas publicaciones realizadas </h2></i>
+    </div>
+    <hr>
+    <br>
+    <div class="row gx-5 justify-content-center"></div>
+            {% for p in publicacion %} 
+                <div class="row-cols-2 row-cols-md-1 g-1">
+                    <div class="col">
+                        <div class="card h-100 shadow border-0">
+                            <div>    
+                                <div class="card-body p-3">
+                                    <h5 class="badge bg-black bg-gradient rounded-pill mb-2">{{p.nombre}}</h5>
+                                    <p class="card-text">{{p.descripcion|slice:250|safe}}</p>
+                                </div>
+                                <img class="card-img-top" src="{{p.imagen.url}}" alt="..." />
+                                <div class="card-footer">
+                                    <small class="text-muted">Publicado por: <i>{{ p.autor }}, el {{ p.fecha }}</i></small>
+                                    <br>
+                                    <br>
+                                    <button><a class="dropdown-item" href="{% url 'leerpublicacion' p.id %}">Ir a la publicacion completa</a></button></th>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>  
+            {% endfor %}
+
+</section>
+
+{% endif %}
+                
+{%endblock%}
+
