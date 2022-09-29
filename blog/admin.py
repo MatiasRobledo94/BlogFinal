@@ -9,4 +9,4 @@ class PerfilAdmin(admin.ModelAdmin):
 
 admin.site.register(Publicacion, PublicacionAdmin)
 admin.site.register(Avatar)
-admin.site.register(Perfil, PerfilAdmin)
+admin.site.register(Perfil)

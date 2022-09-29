@@ -164,18 +164,20 @@ def comprobacion(request):
 
 @login_required
 def perfil(request):
-    usuario=request.user
+    user=request.user
     if request.method == "POST":
         form = Perfil(request.POST, request.FILES)
         if form.is_valid(): 
             informacion = form.cleaned_data
-            form = Perfil(descripcion=informacion["descripcion"], link=informacion["link"], imagen=informacion["imagen"])
-            perfil.save()
-            return render(request,'blog/inicio.html', {'usuario':request.user,"mensaje":f"Se agrego informacion correctamente",'imagen':obtenerAvatar(request)})
+            user.descripcion=informacion["descripcion"]
+            user.link=informacion["link"]
+            user.imagen=informacion["imagen"]
+            user.save()
+            return render(request,'blog/inicio.html', {"mensaje":f"Se agrego informacion correctamente",'imagen':obtenerAvatar(request)})
     else:
         form = Perfil()
     return render(request, "blog/agregarinformacion.html", {"form": form,'usuario':request.user,'imagen':obtenerAvatar(request)})
 
-# def miperfil(request, id):
-    miperfil=Perfil.objects.filter(id=id) 
-    return render (request, 'blog/miperfil.html', {'leerpublicacion': leerpublicacion,'imagen':obtenerAvatar(request)})
+def miperfil(request):
+    miperfil=Perfil.objects.all() 
+    return render (request, 'blog/miperfil.html', {'miperfil': miperfil,'imagen':obtenerAvatar(request)})

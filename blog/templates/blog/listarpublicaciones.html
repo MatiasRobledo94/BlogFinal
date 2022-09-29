@@ -23,7 +23,9 @@
 
             </thead>
             <tbody>
-                    {% if not Publicacion %}
+                    {% if  Publicacion %}
+                    <p>No hay publicaciones realizadas</p>
+                    {% else %}
                     {% for p in listarpublicaciones %}
                         <tr> 
                             <th>{{ p.categoria }}</th>
@@ -36,8 +38,8 @@
                             <th><button><a class="dropdown-item" href="{% url 'eliminarpublicacion' p.id %}">Eliminar</a></button></th>
                         </tr>
                     {% endfor %} 
-                    {% else %}
-                    <p>No hay publicaciones realizadas</p>
+                    
+                    
                     {% endif %}
             </tbody>            
         </table>

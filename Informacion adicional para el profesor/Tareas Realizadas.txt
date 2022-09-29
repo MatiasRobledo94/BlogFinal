@@ -1,0 +1,11 @@
+Las tareas realizadas se han llevado en su conjunto en colaboracion por ambos, en caso de no poder continuar con las mismas.
+
+Almenara Matias:
+He llevado a cabo la realizacion de modelos formularios y aplicacion de avatar envio y recepcion de mensajes, tareas de comprobacion. UnitTest
+
+Robledo Matias:
+
+He llevado a cabo la realizacion de modelos, forms, diseños de html, filtros de mensajes por usuario, entre otras tareas.
+
+
+	  
